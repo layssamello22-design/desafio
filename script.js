@@ -18,55 +18,11 @@ function fazerJogada(linha, coluna) {
     tabuleiro[linha][coluna] = jogadorAtual;
 
     // 3. Atualizar o HTML para mostrar o X ou O na tela
-    atualizarTela();
 
-{
-    
-        if (tabuleiro[0][0] !== "" &&
-        tabuleiro[0][0] === tabuleiro[0][1] &&
-        tabuleiro[0][1] === tabuleiro[0][2]) {
-        alert("O jogador " + tabuleiro[0][0] + " GANHOU!");
-    }
-        if (tabuleiro[1][0] !== "" &&
-        tabuleiro[1][0] === tabuleiro[1][1] &&
-        tabuleiro[1][1] === tabuleiro[1][2]) {
-        alert("O jogador " + tabuleiro[0][0] + " GANHOU!");
-    }
-      if (tabuleiro[2][0] !== "" &&
-        tabuleiro[2][0] === tabuleiro[2][1] &&
-        tabuleiro[2][1] === tabuleiro[2][2]) {
-        alert("O jogador " + tabuleiro[0][0] + " GANHOU!");
-    }
+atualizarTela();
 
-    
-        if (tabuleiro[0][0] !== "" &&
-        tabuleiro[0][1] === tabuleiro[0][1] &&
-        tabuleiro[0][1] === tabuleiro[0][2]) {
-        alert("O jogador " + tabuleiro[0][0] + " GANHOU!");
-    }
-        if (tabuleiro[1][1] !== "" &&
-        tabuleiro[1][0] === tabuleiro[1][1] &&
-        tabuleiro[1][1] === tabuleiro[1][2]) {
-        alert("O jogador " + tabuleiro[0][0] + " GANHOU!");
-    }
-      if (tabuleiro[2][0] !== "" &&
-        tabuleiro[2][0] === tabuleiro[2][1] &&
-        tabuleiro[2][1] === tabuleiro[2][2]) {
-        alert("O jogador " + tabuleiro[0][0] + " GANHOU!");
-    }
-
-
-
-}
-
-
-
-
-
-
-
-
-    // 4. Alternar o jogador (Se era X, vira O. Se era O, vira X)
+    verificarVencedor();
+  // 4. Alternar o jogador (Se era X, vira O. Se era O, vira X)
     if (jogadorAtual === "X") {
         jogadorAtual = "O";
     } else {
@@ -75,7 +31,71 @@ function fazerJogada(linha, coluna) {
 
     // Atualizar a mensagem na tela
     document.getElementById("mensagem").innerText = "Vez do jogador: " + jogadorAtual;
+    
+    
 }
+
+
+
+function verificarVencedor() {
+
+    //Verificar resultado por linha
+        if (tabuleiro[0][0] !== "" &&
+        tabuleiro[0][0] === tabuleiro[0][1] &&
+        tabuleiro[0][1] === tabuleiro[0][2]) {
+        alert("O jogador " + tabuleiro[0][0] + " GANHOU!");
+       return;
+    }
+        if (tabuleiro[1][0] !== "" &&
+        tabuleiro[1][0] === tabuleiro[1][1] &&
+        tabuleiro[1][1] === tabuleiro[1][2]) {
+        alert("O jogador " + tabuleiro[1][0] + " GANHOU!");
+        return;
+    }
+        if (tabuleiro[2][0] !== "" &&
+        tabuleiro[2][0] === tabuleiro[2][1] &&
+        tabuleiro[2][1] === tabuleiro[2][2]) {
+        alert("O jogador " + tabuleiro[2][0] + " GANHOU!");
+        return;
+    }
+
+    //Verificar vencedor por coluna
+        if (tabuleiro[0][0] !== "" &&
+        tabuleiro[0][0] === tabuleiro[1][0] &&
+        tabuleiro[1][0] === tabuleiro[2][0]) {
+        alert("O jogador " + tabuleiro[0][0] + " GANHOU!");
+        return;
+    }
+        if (tabuleiro[0][1] !== "" &&
+        tabuleiro[0][1] === tabuleiro[1][1] &&
+        tabuleiro[1][1] === tabuleiro[2][1]) {
+        alert("O jogador " + tabuleiro[0][1] + " GANHOU!");
+        return;
+    }
+      if (tabuleiro[0][2] !== "" &&
+        tabuleiro[0][2] === tabuleiro[1][2] &&
+        tabuleiro[1][2] === tabuleiro[2][2]) {
+        alert("O jogador " + tabuleiro[0][2] + " GANHOU!");
+        return;
+    }
+
+    //Verficar vencedor por diagonal
+      if (tabuleiro[0][0] !== "" &&
+        tabuleiro[0][0] === tabuleiro[1][1] &&
+        tabuleiro[1][1] === tabuleiro[2][2]) {
+        alert("O jogador " + tabuleiro[0][0] + " GANHOU!");
+        return;
+    }
+      if (tabuleiro[0][2] !== "" &&
+        tabuleiro[0][2] === tabuleiro[1][1] &&
+        tabuleiro[1][1] === tabuleiro[2][0]) {
+        alert("O jogador " + tabuleiro[1][2] + " GANHOU!");
+        return;
+
+    }
+}
+
+
 
 function atualizarTela() {
     // Pegamos todas as divs que têm a classe 'celula'
@@ -93,4 +113,4 @@ function atualizarTela() {
    
 }
 
- 
+
