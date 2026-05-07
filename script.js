@@ -8,29 +8,30 @@ let tabuleiro = [
 let jogadorAtual = "X"; // O jogo começa sempre com o X
 
 function fazerJogada(linha, coluna) {
+    
     // 1. Verificar se a posição na matriz já está ocupada
-    if (tabuleiro[linha][coluna] !== "") {
+        if (tabuleiro[linha][coluna] !== "") {
         alert("Esta posição já está ocupada! Escolhe outra.");
         return; // Para a função aqui
-    }
+     }
 
     // 2. Gravar o "X" ou "O" na matriz, na linha e coluna corretas
-    tabuleiro[linha][coluna] = jogadorAtual;
+        tabuleiro[linha][coluna] = jogadorAtual;
 
     // 3. Atualizar o HTML para mostrar o X ou O na tela
 
-atualizarTela();
+    atualizarTela();
 
-    verificarVencedor();
-  // 4. Alternar o jogador (Se era X, vira O. Se era O, vira X)
-    if (jogadorAtual === "X") {
+    
+    // 4. Alternar o jogador (Se era X, vira O. Se era O, vira X)
+        if (jogadorAtual === "X") {
         jogadorAtual = "O";
-    } else {
+    }   else {
         jogadorAtual = "X";
     }
-
+    verificarVencedor();
     // Atualizar a mensagem na tela
-    document.getElementById("mensagem").innerText = "Vez do jogador: " + jogadorAtual;
+        document.getElementById("mensagem").innerText = "Vez do jogador: " + jogadorAtual;
     
     
 }
@@ -44,19 +45,19 @@ function verificarVencedor() {
         tabuleiro[0][0] === tabuleiro[0][1] &&
         tabuleiro[0][1] === tabuleiro[0][2]) {
         alert("O jogador " + tabuleiro[0][0] + " GANHOU!");
-       return;
+       return true;
     }
         if (tabuleiro[1][0] !== "" &&
         tabuleiro[1][0] === tabuleiro[1][1] &&
         tabuleiro[1][1] === tabuleiro[1][2]) {
         alert("O jogador " + tabuleiro[1][0] + " GANHOU!");
-        return;
+        return true;
     }
         if (tabuleiro[2][0] !== "" &&
         tabuleiro[2][0] === tabuleiro[2][1] &&
         tabuleiro[2][1] === tabuleiro[2][2]) {
         alert("O jogador " + tabuleiro[2][0] + " GANHOU!");
-        return;
+        return true;
     }
 
     //Verificar vencedor por coluna
@@ -64,19 +65,21 @@ function verificarVencedor() {
         tabuleiro[0][0] === tabuleiro[1][0] &&
         tabuleiro[1][0] === tabuleiro[2][0]) {
         alert("O jogador " + tabuleiro[0][0] + " GANHOU!");
-        return;
+        return true;
     }
         if (tabuleiro[0][1] !== "" &&
         tabuleiro[0][1] === tabuleiro[1][1] &&
         tabuleiro[1][1] === tabuleiro[2][1]) {
-        alert("O jogador " + tabuleiro[0][1] + " GANHOU!");
-        return;
+        alert("O jogador " + tabuleiro[0][1] + " GANHOU!");{
+        return true; 
+        }
+         
     }
       if (tabuleiro[0][2] !== "" &&
         tabuleiro[0][2] === tabuleiro[1][2] &&
         tabuleiro[1][2] === tabuleiro[2][2]) {
         alert("O jogador " + tabuleiro[0][2] + " GANHOU!");
-        return;
+        return true;
     }
 
     //Verficar vencedor por diagonal
@@ -84,15 +87,16 @@ function verificarVencedor() {
         tabuleiro[0][0] === tabuleiro[1][1] &&
         tabuleiro[1][1] === tabuleiro[2][2]) {
         alert("O jogador " + tabuleiro[0][0] + " GANHOU!");
-        return;
+        return true;
     }
       if (tabuleiro[0][2] !== "" &&
         tabuleiro[0][2] === tabuleiro[1][1] &&
         tabuleiro[1][1] === tabuleiro[2][0]) {
         alert("O jogador " + tabuleiro[1][2] + " GANHOU!");
-        return;
+        return true;
 
     }
+    return false;
 }
 
 
@@ -112,5 +116,20 @@ function atualizarTela() {
     }
    
 }
+
+function reiniciar(){
+
+    if (verificarVencedor === true){
+        atualizarTela();
+    } else {
+        return false;
+    }
+     
+
+ }
+
+
+    
+
 
 
